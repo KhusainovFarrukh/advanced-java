@@ -4,6 +4,10 @@ public class DefaultConstructorClass {
 
   private final String name;
 
+  public DefaultConstructorClass() {
+    this.name = "Default";
+  }
+
   public DefaultConstructorClass(String name) {
     this.name = name;
   }
