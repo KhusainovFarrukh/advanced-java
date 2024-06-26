@@ -23,6 +23,15 @@ public class SingletonApp {
       var eagerSingleton = EagerSingleton.getInstance();
       eagerSingleton.printSingleton();
     }).start();
+
+    new Thread(() -> {
+      var lazySingleton = LazySingleton.getInstance();
+      lazySingleton.printSingleton();
+    }).start();
+    new Thread(() -> {
+      var lazySingleton = LazySingleton.getInstance();
+      lazySingleton.printSingleton();
+    }).start();
   }
 
 }
