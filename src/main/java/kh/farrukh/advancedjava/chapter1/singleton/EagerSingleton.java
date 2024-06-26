@@ -2,6 +2,14 @@ package kh.farrukh.advancedjava.chapter1.singleton;
 
 public class EagerSingleton {
 
+  static {
+    //some delay to simulate the thread interference
+    try {
+      Thread.sleep(2000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
   /*
   An instance of the class is created at the time of class loading.
    */
@@ -21,7 +29,7 @@ public class EagerSingleton {
   }
 
   public void printSingleton() {
-    System.out.println("EagerSingleton: print");
+    System.out.println("EagerSingleton: " + this.hashCode());
   }
 
 }
