@@ -10,12 +10,12 @@ public interface Phone {
     return getBrand() + " " + getModel();
   }
 
-  static Phone create(Long budget) {
-    if (budget < 1000) {
-      return new SamsungGalaxy("Galaxy S21");
-    } else {
-      return new AppleIphone("IPhone 14");
-    }
-  }
+//  static Phone create(Long budget) {
+//    if (budget < 1000) {
+//      return new SamsungGalaxy("Galaxy S21");
+//    } else {
+//      return new AppleIphone("IPhone 14");
+//    }
+//  }
 
 }
