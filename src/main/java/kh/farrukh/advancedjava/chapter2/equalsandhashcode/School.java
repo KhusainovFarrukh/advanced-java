@@ -1,6 +1,6 @@
 package kh.farrukh.advancedjava.chapter2.equalsandhashcode;
 
-public class School {
+public class School implements Cloneable {
 
   private Integer number;
   private String location;
@@ -77,4 +77,8 @@ public class School {
     return result;
   }
 
+  @Override
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
 }

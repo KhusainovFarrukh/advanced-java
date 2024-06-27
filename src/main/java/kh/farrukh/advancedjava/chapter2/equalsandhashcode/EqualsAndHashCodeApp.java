@@ -17,6 +17,17 @@ public class EqualsAndHashCodeApp {
     System.out.println("school1 == school3: " + (school1 == school3));
     System.out.println("school1.hashCode(): " + school1.hashCode());
     System.out.println("school3.hashCode(): " + school3.hashCode());
+
+    try {
+      var school4 = school3.clone();
+
+      System.out.println("school3.equals(school4): " + school3.equals(school4));
+      System.out.println("school3 == school4: " + (school3 == school4));
+      System.out.println("school3.hashCode(): " + school3.hashCode());
+      System.out.println("school4.hashCode(): " + school4.hashCode());
+    } catch (CloneNotSupportedException e) {
+      throw new RuntimeException(e);
+    }
   }
 
 }
