@@ -64,7 +64,7 @@ public class Student {
   @Override
   public int hashCode() {
     var multiplier = new Random().nextInt();
-//    var multiplier = 27;
+//    var multiplier = 31;
 
     var result = 1;
     result = multiplier * result + ((name == null) ? 0 : name.hashCode());
