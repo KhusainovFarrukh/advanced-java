@@ -15,9 +15,11 @@ public class BrokenHashcodeApp {
     students.put(student2, 200L);
     students.put(student3, 300L);
 
-    students.forEach((student, value) -> {
-      System.out.println(student + " -> " + value);
-    });
+    students.forEach((student, value) ->
+        System.out.println(student + " -> " + value));
+
+    var student1Value = students.get(student1);
+    System.out.println(student1Value);
   }
 
 }
