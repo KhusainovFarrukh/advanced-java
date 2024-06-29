@@ -22,17 +22,29 @@ public class ImmutabilityApp {
 //
 //    System.out.println("Mutable 1: " + mutable1);
 
-    var immutable1 = new CustomImmutableClass(
+//    var immutable1 = new CustomImmutableClass(
+//        "Alex Smith",
+//        emails,
+//        new IDCard("1", LocalDate.of(1980, 1, 1))
+//    );
+//    System.out.println("Immutable 1: " + immutable1);
+//
+//    emails.remove(0);
+//    immutable1.getIdCard().setBirthDate(LocalDate.of(1990, 1, 1));
+//
+//    System.out.println("Immutable 1: " + immutable1);
+
+    var record1 = new RecordImmutability(
         "Alex Smith",
         emails,
         new IDCard("1", LocalDate.of(1980, 1, 1))
     );
-    System.out.println("Immutable 1: " + immutable1);
+    System.out.println("Record 1: " + record1);
 
-    emails.remove(0);
-    immutable1.getIdCard().setBirthDate(LocalDate.of(1990, 1, 1));
+    record1.emails().remove(0);
+    record1.idCard().setBirthDate(LocalDate.of(1990, 1, 1));
 
-    System.out.println("Immutable 1: " + immutable1);
+    System.out.println("Record 1: " + record1);
   }
 
 }
