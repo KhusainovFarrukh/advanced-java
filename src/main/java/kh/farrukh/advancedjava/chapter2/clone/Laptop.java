@@ -1,6 +1,6 @@
 package kh.farrukh.advancedjava.chapter2.clone;
 
-public class Laptop {
+public class Laptop implements Cloneable {
 
   private String name;
   private Integer year;
@@ -33,4 +33,10 @@ public class Laptop {
         ", year=" + year +
         '}';
   }
+
+  @Override
+  public Laptop clone() throws CloneNotSupportedException {
+    return (Laptop) super.clone();
+  }
+
 }

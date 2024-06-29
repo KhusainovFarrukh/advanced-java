@@ -35,8 +35,10 @@ public class Developer implements Cloneable {
   }
 
   @Override
-  protected Developer clone() throws CloneNotSupportedException {
-    return (Developer) super.clone();
+  public Developer clone() throws CloneNotSupportedException {
+    var developer = (Developer) super.clone();
+    developer.setLaptop(developer.getLaptop().clone());
+    return developer;
   }
 
 }
