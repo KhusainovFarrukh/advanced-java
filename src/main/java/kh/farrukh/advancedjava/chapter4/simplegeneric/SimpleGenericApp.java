@@ -1,9 +1,9 @@
-package kh.farrukh.advancedjava.chapter4.genericinterfaceclass;
+package kh.farrukh.advancedjava.chapter4.simplegeneric;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class GenericInterfaceClassApp {
+public class SimpleGenericApp {
 
   public static void main(String[] args) {
     AgeInformation<LocalDate> ageInformation1 = new AgeInformation<>();
