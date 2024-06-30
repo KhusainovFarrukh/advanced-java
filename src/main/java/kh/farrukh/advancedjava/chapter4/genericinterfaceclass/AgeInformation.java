@@ -1,4 +1,4 @@
-package kh.farrukh.advancedjava.chapter4.genericinterface;
+package kh.farrukh.advancedjava.chapter4.genericinterfaceclass;
 
 import java.time.LocalDate;
 import java.time.temporal.TemporalAccessor;
