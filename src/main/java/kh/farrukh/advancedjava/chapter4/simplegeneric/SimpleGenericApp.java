@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 public class SimpleGenericApp {
 
   public static void main(String[] args) {
-    AgeInformation<LocalDate> ageInformation1 = new AgeInformation<>();
+    AgeInformation<LocalDate> ageInformation1 = new AgeInformation<>(LocalDate.now(), "now");
     var birthDate1 = LocalDate.of(1990, 1, 1);
     var info1 = ageInformation1.getInfo(birthDate1);
     System.out.println(info1);
 
-    AgeInformation<LocalDateTime> ageInformation2 = new AgeInformation<>();
+    AgeInformation<LocalDateTime> ageInformation2 = new AgeInformation<>(LocalDateTime.MAX, "max");
     var birthDate2 = LocalDateTime.of(1990, 1, 1, 9, 10);
     var info2 = ageInformation2.getInfo(birthDate2);
     System.out.println(info2);
