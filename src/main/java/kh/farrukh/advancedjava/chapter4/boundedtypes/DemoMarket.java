@@ -9,7 +9,6 @@ public class DemoMarket {
   There could be multiple interfaces specified but only single class is allowed.
   The & operator is used to specify multiple bounds.
   It is also possible to use other type parameter as a bound for extends keyword (P extends T).
-
    */
   public <T extends Device & Switchable, P extends T> P startDemo(T t, Supplier<P> supplier) {
     System.out.println("Device name is: " + t.getName());
