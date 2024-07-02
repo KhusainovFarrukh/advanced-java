@@ -11,9 +11,21 @@ public class GenericsUseCases2App {
     animal.log();
   }
 
+  /*
+  With generics, we can specify that the type T must be a subtype of Animal and Loggable.
+  This way, we can avoid creating an intermediate class/interface.
+   */
+  private static <T extends Animal & Loggable> void feed(T animal) {
+    animal.eat();
+    animal.log();
+  }
+
   public static void main(String[] args) {
     var cat = new LoggedCat();
     feed(cat);
+
+    var dog = new LoggedDog();
+    feed(dog);
   }
 
 }
