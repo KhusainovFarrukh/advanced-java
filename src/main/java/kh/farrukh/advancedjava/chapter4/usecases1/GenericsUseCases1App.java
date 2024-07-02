@@ -1,8 +1,8 @@
-package kh.farrukh.advancedjava.chapter4.usecases;
+package kh.farrukh.advancedjava.chapter4.usecases1;
 
 import java.util.UUID;
 
-public class UseCasesApp {
+public class GenericsUseCases1App {
 
   /*
   Without generics, we can do what we want but we have to cast the return type to the desired type.
