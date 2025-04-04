@@ -1,5 +1,6 @@
 package kh.farrukh.advancedjava.chapter3.interfaces;
 
+//FunctionalInterface annotation hints the compiler to verify that the interface contains only one abstract method
 @FunctionalInterface
 public interface SomeFunctionalInterface {
 
