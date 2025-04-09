@@ -3,8 +3,9 @@ package kh.farrukh.advancedjava.chapter3.lambda;
 public class LambdaApp {
 
   public static void main(String[] args) {
-    mainClosure();
+//    mainClosure();
 //    mainClosureWithWrapperObject();
+    mainClosureWithWrapperObjectAsync();
   }
 
   public static void mainClosure() {
@@ -38,6 +39,28 @@ public class LambdaApp {
     //8: we can change its value after lambda
     lambdaModel.setName("Someone else outer");
     System.out.println("Name after lambda outer: " + lambdaModel.getName());
+  }
+
+  public static void mainClosureWithWrapperObjectAsync() {
+    var someLambdaConsumerClass = new SomeLambdaConsumerClass();
+    var lambdaModel = new LambdaModel("Someone");
+    lambdaModel.setName("Someone 2");
+    //9: but if we are in multithreaded environment, changes to the wrapper object in one thread will affect other threads
+    someLambdaConsumerClass.doItAsync(1000, () -> {
+      //10: there we will think we will print "Someone 2", but in fact main thread already changed it to "Someone else outer"
+      System.out.println("Hello from " + lambdaModel.getName());
+      lambdaModel.setName("Someone else");
+    });
+    System.out.println("Name after lambda: " + lambdaModel.getName());
+    lambdaModel.setName("Someone else outer");
+    System.out.println("Name after lambda outer: " + lambdaModel.getName());
+    try {
+      Thread.sleep(2000);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+    //11: there we will think we will print "Someone else outer", but in fact lambda thread already changed it to "Someone else"
+    System.out.println("Name after sleep: " + lambdaModel.getName());
   }
 
 }
