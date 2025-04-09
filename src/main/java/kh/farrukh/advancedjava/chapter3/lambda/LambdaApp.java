@@ -1,11 +1,14 @@
 package kh.farrukh.advancedjava.chapter3.lambda;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 public class LambdaApp {
 
   public static void main(String[] args) {
 //    mainClosure();
 //    mainClosureWithWrapperObject();
-    mainClosureWithWrapperObjectAsync();
+//    mainClosureWithWrapperObjectAsync();
+    mainClosureWithWrapperObjectAsyncAtomic();
   }
 
   public static void mainClosure() {
@@ -61,6 +64,31 @@ public class LambdaApp {
     }
     //11: there we will think we will print "Someone else outer", but in fact lambda thread already changed it to "Someone else"
     System.out.println("Name after sleep: " + lambdaModel.getName());
+  }
+
+  public static void mainClosureWithWrapperObjectAsyncAtomic() {
+    var someLambdaConsumerClass = new SomeLambdaConsumerClass();
+    //12: it is better to use AtomicReference instead of custom wrapper object
+    //because it is thread safe and we don't need to worry about synchronization
+    //But It doesn’t eliminate the timing issue—output still depends on when the lambda runs vs. when set() happens. But it ensures the value is always valid, not corrupted
+    var lambdaModel = new AtomicReference<>("Someone");
+    lambdaModel.set("Someone 2");
+    //9: but if we are in multithreaded environment, changes to the wrapper object in one thread will affect other threads
+    someLambdaConsumerClass.doItAsync(1000, () -> {
+      //10: there we will think we will print "Someone 2", but in fact main thread already changed it to "Someone else outer"
+      System.out.println("Hello from " + lambdaModel.get());
+      lambdaModel.set("Someone else");
+    });
+    System.out.println("Name after lambda: " + lambdaModel.get());
+    lambdaModel.set("Someone else outer");
+    System.out.println("Name after lambda outer: " + lambdaModel.get());
+    try {
+      Thread.sleep(2000);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+    //11: there we will think we will print "Someone else outer", but in fact lambda thread already changed it to "Someone else"
+    System.out.println("Name after sleep: " + lambdaModel.get());
   }
 
 }
